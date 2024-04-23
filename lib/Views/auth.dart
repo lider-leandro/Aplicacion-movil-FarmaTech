@@ -19,21 +19,21 @@ class AuthScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                "Authentication",
+                "INICIO DE SESION",
                 style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
                     color: primaryColor),
               ),
               const Text(
-                "Authenticate to access your vital information",
+                "Autenticate para acceder a nuestra aplicación",
                 style: TextStyle(color: Colors.grey),
               ),
-              Expanded(child: Image.asset("assets/startup.jpg")),
-              Button(label: "LOGIN", press: () {
+              Expanded(child: Image.asset("assets/background.jpg")),
+              Button(label: "INICIAR SESION", press: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> const LoginScreen()));
               }),
-              Button(label: "SIGN UP", press: () {
+              Button(label: "CREAR CUENTA", press: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> const SignupScreen()));
               }),
             ],

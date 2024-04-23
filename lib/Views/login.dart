@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if(res == true){
       //If result is correct then go to profile or home
       if(!mounted)return;
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> Profile(profile: usrDetails)));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=> Profile()));
     }else{
       //Otherwise show the error message
       setState(() {
@@ -55,14 +55,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 //Because we don't have account, we must create one to authenticate
                 //lets go to sign up
 
-                const Text("LOGIN",style: TextStyle(color: primaryColor,fontSize: 40),),
-                Image.asset("assets/background.jpg"),
-                InputField(hint: "Username", icon: Icons.account_circle, controller: usrName),
-                InputField(hint: "Password", icon: Icons.lock, controller: password,passwordInvisible: true),
+                const Text("INICIO",style: TextStyle(color: primaryColor,fontSize: 40),),
+                Image.asset("assets/fondo.jpg"),
+                InputField(hint: "Usuario", icon: Icons.account_circle, controller: usrName),
+                InputField(hint: "Contraseña", icon: Icons.lock, controller: password,passwordInvisible: true),
 
                 ListTile(
                   horizontalTitleGap: 2,
-                  title: const Text("Remember me"),
+                  title: const Text("Recordar"),
                   leading: Checkbox(
                     activeColor: primaryColor,
                     value: isChecked,
@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                 //Our login button
-                Button(label: "LOGIN", press: (){
+                Button(label: "INICIAR SESION", press: (){
                 login();
 
                 }),
@@ -83,19 +83,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Don't have an account?",style: TextStyle(color: Colors.grey),),
+                    const Text("No tiene una cuenta?",style: TextStyle(color: Colors.grey),),
                     TextButton(
                         onPressed: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context)=> const SignupScreen()));
                         },
-                        child: const Text("SIGN UP"))
+                        child: const Text("CREAR CUENTA"))
                   ],
                 ),
 
                  // Access denied message in case when your username and password is incorrect
                 //By default we must hide it
                  //When login is not true then display the message
-                 isLoginTrue? Text("Username or password is incorrect",style: TextStyle(color: Colors.red.shade900),):const SizedBox(),
+                 isLoginTrue? Text("usuario o la contraseña es incorrecta",style: TextStyle(color: Colors.red.shade900),):const SizedBox(),
               ],
             ),
           ),

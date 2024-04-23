@@ -46,11 +46,11 @@ class _SignupScreenState extends State<SignupScreen> {
                ),
 
                 const SizedBox(height: 20),
-                InputField(hint: "Full name", icon: Icons.person, controller: fullName),
+                InputField(hint: "Nombre completo", icon: Icons.person, controller: fullName),
                 InputField(hint: "Email", icon: Icons.email, controller: email),
-                InputField(hint: "Username", icon: Icons.account_circle, controller: usrName),
-                InputField(hint: "Password", icon: Icons.lock, controller: password,passwordInvisible: true),
-                InputField(hint: "Re-enter password", icon: Icons.lock, controller: confirmPassword,passwordInvisible: true),
+                InputField(hint: "Usuario", icon: Icons.account_circle, controller: usrName),
+                InputField(hint: "Contraseña", icon: Icons.lock, controller: password,passwordInvisible: true),
+                InputField(hint: "Vuelva a escribir su contraseña", icon: Icons.lock, controller: confirmPassword,passwordInvisible: true),
 
                 const SizedBox(height: 10),
                 Button(label: "SIGN UP", press: (){
