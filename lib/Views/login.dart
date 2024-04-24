@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 //lets go to sign up
 
                 const Text("INICIO",style: TextStyle(color: primaryColor,fontSize: 40),),
-                Image.asset("assets/fondo.jpg"),
+                Image.asset("assets/fondo.jpeg"),
                 InputField(hint: "Usuario", icon: Icons.account_circle, controller: usrName),
                 InputField(hint: "Contraseña", icon: Icons.lock, controller: password,passwordInvisible: true),
 

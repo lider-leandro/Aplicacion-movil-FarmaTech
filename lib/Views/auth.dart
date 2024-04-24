@@ -26,10 +26,10 @@ class AuthScreen extends StatelessWidget {
                     color: primaryColor),
               ),
               const Text(
-                "Autenticate para acceder a nuestra aplicación",
+                "registrate para acceder a nuestra aplicación",
                 style: TextStyle(color: Colors.grey),
               ),
-              Expanded(child: Image.asset("assets/background.jpg")),
+              Expanded(child: Image.asset("assets/fondo.jpeg")),
               Button(label: "INICIAR SESION", press: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> const LoginScreen()));
               }),
