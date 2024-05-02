@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   sqflite: ^2.3.0
   path: ^1.8.3
+  mysql1: ^0.20.0
 
 
 dev_dependencies:
