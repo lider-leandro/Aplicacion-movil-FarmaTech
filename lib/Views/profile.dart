@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'dart:math';
+
+void main() {
+  runApp(MaterialApp(
+    home: Profile(),
+    routes: {
+      '/blue_screen': (context) => SettingsScreen(),
+    },
+  ));
+}
 
 class Profile extends StatefulWidget {
   @override
@@ -58,68 +68,62 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-  title: Text('FarmaTech'),
-  backgroundColor: Color.fromRGBO(45, 177, 132, 1.0), // Color del AppBar
-  actions: [
-    IconButton(
-      icon: Icon(Icons.menu),
-      onPressed: () {
-        // Mostrar menú emergente
-        showMenu(
-          context: context,
-          position: RelativeRect.fromLTRB(0, 50, 0, 0),
-          items: [
-            PopupMenuItem(
-              child: ListTile(
-                leading: Icon(Icons.home),
-                title: Text('Inicio'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Navegar a la pantalla de inicio
-                  _onItemTapped(0);
-                },
-              ),
-            ),
-            PopupMenuItem(
-              child: ListTile(
-                leading: Icon(Icons.favorite),
-                title: Text('Favoritos'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Navegar a la pantalla de favoritos
-                  _onItemTapped(1);
-                },
-              ),
-            ),
-            PopupMenuItem(
-              child: ListTile(
-                leading: Icon(Icons.rocket),
-                title: Text('Lanzamientos'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Navegar a la pantalla de lanzamientos
-                  _onItemTapped(2);
-                },
-              ),
-            ),
-            PopupMenuItem(
-              child: ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('Ajustes'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Navegar a la pantalla de ajustes
-                  _onItemTapped(3);
-                },
-              ),
-            ),
-          ],
-        );
-      },
-    ),
-  ],
-),
-
+        title: Text('FarmaTech'),
+        backgroundColor: Color.fromRGBO(45, 177, 132, 1.0),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              showMenu(
+                context: context,
+                position: RelativeRect.fromLTRB(0, 50, 0, 0),
+                items: [
+                  PopupMenuItem(
+                    child: ListTile(
+                      leading: Icon(Icons.home),
+                      title: Text('Inicio'),
+                      onTap: () {
+                        Navigator.pop(context);
+                        _onItemTapped(0);
+                      },
+                    ),
+                  ),
+                  PopupMenuItem(
+                    child: ListTile(
+                      leading: Icon(Icons.favorite),
+                      title: Text('Favoritos'),
+                      onTap: () {
+                        Navigator.pop(context);
+                        _onItemTapped(1);
+                      },
+                    ),
+                  ),
+                  PopupMenuItem(
+                    child: ListTile(
+                      leading: Icon(Icons.rocket),
+                      title: Text('Lanzamientos'),
+                      onTap: () {
+                        Navigator.pop(context);
+                        _onItemTapped(2);
+                      },
+                    ),
+                  ),
+                  PopupMenuItem(
+                    child: ListTile(
+                      leading: Icon(Icons.settings),
+                      title: Text('Ajustes'),
+                      onTap: () {
+                        Navigator.pop(context);
+                        _onItemTapped(3);
+                      },
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -150,8 +154,9 @@ class _ProfileState extends State<Profile> {
                   RoundButton(
                     color: Colors.blue,
                     iconData: Icons.search,
-                    onPressed: () =>
-                        _navigateToAnotherScreen(context, '/blue_screen'),
+                    onPressed: () {
+                    _navigateToAnotherScreen(context, '/settings_screen');
+                    },
                     label: 'Búsqueda',
                   ),
                   RoundButton(
@@ -209,21 +214,176 @@ class _ProfileState extends State<Profile> {
   }
 }
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
+  @override
+  _SettingsScreenState createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  List<Medicamento> _medicamentos = [
+    Medicamento(
+      nombre: 'Paracetamol',
+      descripcion: 'Medicamento para aliviar el dolor y reducir la fiebre.',
+      presentacion: 'Tabletas de 500 mg',
+    ),
+    Medicamento(
+      nombre: 'Ibuprofeno',
+      descripcion:
+          'Medicamento antiinflamatorio no esteroideo (AINE) que se usa para aliviar el dolor, la inflamación y la fiebre.',
+      presentacion: 'Tabletas de 400 mg',
+    ),
+    Medicamento(
+      nombre: 'Aspirina',
+      descripcion:
+          'Medicamento antiinflamatorio no esteroideo (AINE) que se usa para aliviar el dolor, la inflamación y la fiebre.',
+      presentacion: 'Tabletas de 100 mg',
+    ),
+    Medicamento(
+      nombre: 'Omeprazol',
+      descripcion:
+          'Medicamento que disminuye la cantidad de ácido producido en el estómago.',
+      presentacion: 'Cápsulas de 20 mg',
+    ),
+    Medicamento(
+      nombre: 'Amoxicilina',
+      descripcion:
+          'Antibiótico que se utiliza para tratar infecciones bacterianas.',
+      presentacion: 'Cápsulas de 500 mg',
+    ),
+    Medicamento(
+      nombre: 'Loratadina',
+      descripcion:
+          'Antihistamínico utilizado para aliviar los síntomas de la alergia.',
+      presentacion: 'Tabletas de 10 mg',
+    ),
+    Medicamento(
+      nombre: 'Dipirona',
+      descripcion:
+          'Medicamento para aliviar el dolor y bajar la fiebre. También se usa como analgésico y antipirético.',
+      presentacion: 'Solución inyectable de 50 mg/ml',
+    ),
+    Medicamento(
+      nombre: 'Dexametasona',
+      descripcion:
+          'Corticoesteroide que se utiliza para tratar diversas afecciones, como inflamaciones, alergias y trastornos inmunológicos.',
+      presentacion: 'Tabletas de 4 mg',
+    ),
+    Medicamento(
+      nombre: 'Ranitidina',
+      descripcion:
+          'Antagonista del receptor H2 que se utiliza para reducir la producción de ácido en el estómago.',
+      presentacion: 'Tabletas de 150 mg',
+    ),
+    Medicamento(
+      nombre: 'Prednisona',
+      descripcion:
+          'Corticoesteroide que se utiliza para tratar diversas afecciones, como inflamaciones, alergias y trastornos autoinmunitarios.',
+      presentacion: 'Tabletas de 5 mg',
+    ),
+    Medicamento(
+      nombre: 'Dextrometorfano',
+      descripcion:
+          'Antitusivo utilizado para el alivio temporal de la tos no productiva o seca.',
+      presentacion: 'Jarabe de 15 mg/5 ml',
+    ),
+    Medicamento(
+      nombre: 'Acetaminofén',
+      descripcion:
+          'Analgésico y antipirético utilizado para aliviar el dolor y reducir la fiebre.',
+      presentacion: 'Tabletas de 500 mg',
+    ),
+    Medicamento(
+      nombre: 'Diclofenaco',
+      descripcion:
+          'Medicamento antiinflamatorio no esteroideo (AINE) que se utiliza para aliviar el dolor y reducir la inflamación.',
+      presentacion: 'Tabletas de 50 mg',
+    ),
+    Medicamento(
+      nombre: 'Hidroxicloroquina',
+      descripcion:
+          'Medicamento utilizado para tratar o prevenir la malaria y para tratar enfermedades autoinmunitarias como el lupus y la artritis reumatoide.',
+      presentacion: 'Tabletas de 200 mg',
+    ),
+    Medicamento(
+      nombre: 'Hidrocodona',
+      descripcion:
+          'Analgésico opioide que se utiliza para aliviar el dolor moderado a severo.',
+      presentacion: 'Tabletas de 5 mg',
+    ),
+  ];
+  List<Medicamento> _filteredMedicamentos = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _filteredMedicamentos = _medicamentos;
+  }
+
+  void _filtrarMedicamentos(String query) {
+    setState(() {
+      _filteredMedicamentos = _medicamentos
+          .where((medicamento) =>
+              medicamento.nombre.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Ajustes'),
       ),
-      body: Center(
-        child: Text(
-          'Pantalla de ajustes',
-          style: TextStyle(fontSize: 24),
-        ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              onChanged: _filtrarMedicamentos,
+              decoration: InputDecoration(
+                hintText: 'Buscar medicamentos...',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: _filteredMedicamentos.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(_filteredMedicamentos[index].nombre),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(_filteredMedicamentos[index].descripcion),
+                      Text(
+                          'Presentación: ${_filteredMedicamentos[index].presentacion}'),
+                    ],
+                  ),
+                  onTap: () {
+                    // Manejar la selección del medicamento
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
+}
+
+class Medicamento {
+  final String nombre;
+  final String descripcion;
+  final String presentacion;
+
+  Medicamento({
+    required this.nombre,
+    required this.descripcion,
+    required this.presentacion,
+  });
 }
 
 class RoundButton extends StatelessWidget {

@@ -1,7 +1,7 @@
 //Our custom textfield
 
 import 'package:flutter/material.dart';
-import 'package:flutter_sqlite_auth_app/Components/colors.dart';
+import 'package:FarmaTech/Components/colors.dart';
 
 class InputField extends StatelessWidget {
   final String hint;

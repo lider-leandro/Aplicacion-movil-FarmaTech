@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sqlite_auth_app/Components/button.dart';
-import 'package:flutter_sqlite_auth_app/Components/colors.dart';
-import 'package:flutter_sqlite_auth_app/Components/textfield.dart';
-import 'package:flutter_sqlite_auth_app/JSON/users.dart';
-import 'package:flutter_sqlite_auth_app/Views/profile.dart';
-import 'package:flutter_sqlite_auth_app/Views/signup.dart';
+import '../Components/button.dart';
+import 'package:FarmaTech/Components/colors.dart';
+import 'package:FarmaTech/Components/textfield.dart';
+import 'package:FarmaTech/JSON/users.dart';
+import 'package:FarmaTech/Views/profile.dart';
+import 'package:FarmaTech/Views/signup.dart';
 
 import '../SQLite/database_helper.dart';
 

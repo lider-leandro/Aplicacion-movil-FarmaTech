@@ -1,4 +1,4 @@
-name: flutter_sqlite_auth_app
+name: FarmaTech
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -37,7 +37,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   sqflite: ^2.3.0
   path: ^1.8.3
-  mysql1: ^0.20.0
+  firebase_core: ^2.30.1
+  firebase_auth: ^4.19.4
+  google_sign_in: ^6.2.1
+
 
 
 dev_dependencies:

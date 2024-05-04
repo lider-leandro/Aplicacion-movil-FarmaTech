@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="flutter_sqlite_auth_app"
+        android:label="FarmaTech"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/farmacia">
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sqlite_auth_app/Components/button.dart';
-import 'package:flutter_sqlite_auth_app/Components/colors.dart';
-import 'package:flutter_sqlite_auth_app/Components/textfield.dart';
-import 'package:flutter_sqlite_auth_app/JSON/users.dart';
-import 'package:flutter_sqlite_auth_app/Views/login.dart';
+import 'package:FarmaTech/Components/button.dart';
+import 'package:FarmaTech/Components/colors.dart';
+import 'package:FarmaTech/Components/textfield.dart';
+import 'package:FarmaTech/JSON/users.dart';
+import 'package:FarmaTech/Views/login.dart';
 
 import '../SQLite/database_helper.dart';
 

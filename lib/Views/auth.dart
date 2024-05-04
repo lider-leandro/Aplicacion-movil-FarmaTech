@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sqlite_auth_app/Components/button.dart';
-import 'package:flutter_sqlite_auth_app/Components/colors.dart';
-import 'package:flutter_sqlite_auth_app/Views/login.dart';
-import 'package:flutter_sqlite_auth_app/Views/signup.dart';
+import '../Components/button.dart';
+import '../Components/colors.dart';
+import '../Views/login.dart';
+import '../Views/signup.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -19,7 +19,7 @@ class AuthScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                "INICIO DE SESION",
+                "FARMATECH",
                 style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
