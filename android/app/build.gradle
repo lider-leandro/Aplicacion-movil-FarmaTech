@@ -27,7 +27,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.flutter_sqlite_auth_app"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 34 // Actualiza esta línea con la versión que desees
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -69,5 +69,4 @@ flutter {
 }
 
 dependencies {
-    implementation 'com.android.support:multidex:1.0.3'
 }

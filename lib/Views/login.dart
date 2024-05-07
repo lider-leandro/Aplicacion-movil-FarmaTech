@@ -5,7 +5,7 @@ import 'package:FarmaTech/Components/textfield.dart';
 import 'package:FarmaTech/JSON/users.dart';
 import 'package:FarmaTech/Views/profile.dart';
 import 'package:FarmaTech/Views/signup.dart';
-
+import '../page/publicidad.dart';
 import '../SQLite/database_helper.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if(res == true){
       //If result is correct then go to profile or home
       if(!mounted)return;
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> Profile()));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=> SplashScreen()));
     }else{
       //Otherwise show the error message
       setState(() {
