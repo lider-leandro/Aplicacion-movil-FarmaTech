@@ -5,7 +5,6 @@ import '../Views/login.dart';
 import '../Views/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import './homepage.dart';
 import '../page/publicidad.dart';
 
 class AuthScreen extends StatelessWidget {
@@ -73,21 +72,18 @@ class AuthScreen extends StatelessWidget {
                   onPressed: () {
                     signInWithGoogle().then((user) {
                       if (user != null) {
-                        // Cambiar manualmente el estado de autenticación
-                        FirebaseAuth.instance
-                            .authStateChanges()
-                            .listen((User? user) {
-                          if (user != null) {
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return SplashScreen();
-                                },
-                              ),
-                            );
-                          }
-                        });
+                        // El usuario inició sesión con éxito, redirigirlo a la pantalla de inicio
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return SplashScreen();
+                            },
+                          ),
+                        );
                       }
+                    }).catchError((error) {
+                      // Error al iniciar sesión con Google
+                      print(error);
                     });
                   },
                   style: ElevatedButton.styleFrom(

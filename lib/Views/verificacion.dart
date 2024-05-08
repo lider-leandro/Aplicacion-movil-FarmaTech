@@ -1,10 +1,9 @@
-import 'package:FarmaTech/Views/profile.dart';
+import 'package:FarmaTech/Views/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import './homepage.dart';
 import '../page/publicidad.dart';
-/*
+
 class AuthenticationWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,13 +16,13 @@ class AuthenticationWrapper extends StatelessWidget {
           if (snapshot.hasData) {
             return SplashScreen();
           } else {
-            return MyHomePage();
+            return AuthScreen();
           }
         }
       },
     );
   }
-}*/
+}
 
 class MyHomePage extends StatelessWidget {
   @override

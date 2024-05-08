@@ -1,10 +1,6 @@
 import 'package:FarmaTech/Views/auth.dart';
-import 'package:FarmaTech/Views/profile.dart';
-
-import './views/login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import './views/verificacion.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,8 +21,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //Our fist screen
-      //home: AuthScreen(),
-      home: Profile(),
+      home: AuthScreen(),
+      //home: Profile(),
     );
   }
 }

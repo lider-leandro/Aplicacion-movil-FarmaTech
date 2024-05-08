@@ -1,17 +1,12 @@
 import 'package:FarmaTech/page/busqueda.dart';
-import 'package:FarmaTech/page/configuration.dart';
-import 'package:FarmaTech/page/laboratorios.dart';
-import 'package:FarmaTech/page/lanzamientos.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import '../views/verificacion.dart';
 import '../page/publicidad.dart';
-
-import 'package:flutter/material.dart';
-import 'dart:async';
-import '../views/verificacion.dart';
+import '../page/component/barra_menu_profile.dart';
+import '../page/configuration.dart';
+import '../page/laboratorios.dart';
+import '../page/lanzamientos.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -57,18 +52,18 @@ class _ProfileState extends State<Profile> {
     switch (index) {
       case 0:
         Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SettingsScreen()),
-              );
+          context,
+          MaterialPageRoute(builder: (context) => SettingsScreen()),
+        );
         break;
       case 1:
         Navigator.pushNamed(context, '/red_screen');
         break;
       case 2:
         Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => LaboratoriosScreen()),
-              );
+          context,
+          MaterialPageRoute(builder: (context) => LaboratoriosScreen()),
+        );
         break;
     }
   }
@@ -79,14 +74,12 @@ class _ProfileState extends State<Profile> {
       appBar: AppBar(
         title: Text('FarmaTech'),
         backgroundColor: Color.fromRGBO(45, 177, 132, 1.0),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {
-              // Show menu
-            },
-          ),
-        ],
+      ),
+      drawer: Drawer(
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.8,
+          child: MenuBarra(),
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -141,8 +134,7 @@ class _ProfileState extends State<Profile> {
             label: 'Lanzamientos',
           ),
           BottomNavigationBarItem(
-            icon:
-                Icon(Icons.settings, color: Color.fromARGB(255, 208, 210, 210)),
+            icon: Icon(Icons.settings, color: Color.fromARGB(255, 208, 210, 210)),
             label: 'Ajustes',
           ),
         ],
@@ -174,31 +166,6 @@ class _ProfileState extends State<Profile> {
               break;
           }
         },
-      ),
-    );
-  }
-}
-
-class BottomButton extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final VoidCallback? onPressed;
-
-  const BottomButton({
-    Key? key,
-    required this.icon,
-    required this.label,
-    this.onPressed,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ElevatedButton.icon(
-        onPressed: onPressed,
-        icon: Icon(icon),
-        label: Text(label),
       ),
     );
   }

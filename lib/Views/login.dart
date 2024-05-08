@@ -3,7 +3,6 @@ import '../Components/button.dart';
 import 'package:FarmaTech/Components/colors.dart';
 import 'package:FarmaTech/Components/textfield.dart';
 import 'package:FarmaTech/JSON/users.dart';
-import 'package:FarmaTech/Views/profile.dart';
 import 'package:FarmaTech/Views/signup.dart';
 import '../page/publicidad.dart';
 import '../SQLite/database_helper.dart';
