@@ -1,4 +1,5 @@
-import 'package:FarmaTech/page/busqueda.dart';
+import 'package:FarmaTech/page/consulta_screen.dart';
+import 'package:FarmaTech/page/favoritos.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -23,7 +24,7 @@ class _ProfileState extends State<Profile> {
   ];
   late PageController _pageController;
   int _selectedIndex = 0;
-
+  
   @override
   void initState() {
     super.initState();
@@ -53,12 +54,14 @@ class _ProfileState extends State<Profile> {
       case 0:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => SettingsScreen()),
+          MaterialPageRoute(builder: (context) => MedicamentosScreen()),
         );
         break;
       case 1:
-        Navigator.pushNamed(context, '/red_screen');
-        break;
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ConsultaScreen()),
+        );
       case 2:
         Navigator.push(
           context,
@@ -85,7 +88,8 @@ class _ProfileState extends State<Profile> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
-            height: 200,
+            height: 300,
+            width: 100,
             child: PageView.builder(
               itemCount: _images.length,
               controller: _pageController,
@@ -102,23 +106,168 @@ class _ProfileState extends State<Profile> {
               },
             ),
           ),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () => _onItemTapped(0),
-              ),
-              IconButton(
-                icon: Icon(Icons.favorite),
-                onPressed: () => _onItemTapped(1),
-              ),
-              IconButton(
-                icon: Icon(Icons.medical_services),
-                onPressed: () => _onItemTapped(2),
-              ),
-            ],
+          SizedBox(height: 40),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  icon: Column(
+                    children: [
+                      Container(
+                        width: 110,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: Colors.blue.shade100,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.search,
+                          color: Colors.blue,
+                          size: 30,
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        'Buscar',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                  onPressed: () {
+                    _onItemTapped(0);
+                  },
+                ),
+                SizedBox(width: 20),
+                IconButton(
+                  icon: Column(
+                    children: [
+                      Container(
+                        width: 110,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: Colors.pink.shade100,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.favorite,
+                          color: Colors.pink,
+                          size: 30,
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        'Favoritos',
+                        style: TextStyle(
+                          color: Colors.pink,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                  onPressed: () {
+                    _onItemTapped(1);
+                  },
+                ),
+                SizedBox(width: 20),
+                IconButton(
+                  icon: Column(
+                    children: [
+                      Container(
+                        width: 110,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: Colors.green.shade100,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.medical_services,
+                          color: Colors.green,
+                          size: 30,
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        'Laboratorios',
+                        style: TextStyle(
+                          color: Colors.green,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                  onPressed: () {
+                    _onItemTapped(2);
+                  },
+                ),
+                SizedBox(width: 20),
+                IconButton(
+                  icon: Column(
+                    children: [
+                      Container(
+                        width: 110,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: Colors.orange.shade100,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.child_care,
+                          color: Colors.orange,
+                          size: 30,
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        'Niños',
+                        style: TextStyle(
+                          color: Colors.orange,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                  onPressed: () {
+                    // Acción al presionar el icono de restricción para niños
+                  },
+                ),
+                SizedBox(width: 20),
+                IconButton(
+                  icon: Column(
+                    children: [
+                      Container(
+                        width: 110,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: Colors.purple.shade100,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.pregnant_woman,
+                          color: Colors.purple,
+                          size: 40,
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        'Embarazadas',
+                        style: TextStyle(
+                          color: Colors.purple,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                  onPressed: () {
+                    // Acción al presionar el icono de restricción para embarazadas
+                  },
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -134,7 +283,8 @@ class _ProfileState extends State<Profile> {
             label: 'Lanzamientos',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings, color: Color.fromARGB(255, 208, 210, 210)),
+            icon:
+                Icon(Icons.settings, color: Color.fromARGB(255, 208, 210, 210)),
             label: 'Ajustes',
           ),
         ],

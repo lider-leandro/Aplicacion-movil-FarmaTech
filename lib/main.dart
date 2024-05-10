@@ -1,6 +1,7 @@
 import 'package:FarmaTech/Views/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import './Views/profile.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,12 +18,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF2DB184)),
         useMaterial3: true,
       ),
       //Our fist screen
-      home: AuthScreen(),
-      //home: Profile(),
+      //home: AuthScreen(),
+      home: Profile(),
     );
   }
 }
