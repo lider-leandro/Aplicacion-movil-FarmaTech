@@ -24,7 +24,7 @@ class _ProfileState extends State<Profile> {
   ];
   late PageController _pageController;
   int _selectedIndex = 0;
-  
+
   @override
   void initState() {
     super.initState();
@@ -46,37 +46,42 @@ class _ProfileState extends State<Profile> {
     });
   }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    switch (index) {
-      case 0:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => MedicamentosScreen()),
-        );
-        break;
-      case 1:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ConsultaScreen()),
-        );
-      case 2:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => LaboratoriosScreen()),
-        );
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('FarmaTech'),
-        backgroundColor: Color.fromRGBO(45, 177, 132, 1.0),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.5),
+                blurRadius: 20,
+                spreadRadius: 5,
+                offset: Offset(0, 5),
+              ),
+            ],
+          ),
+          child: AppBar(
+            title: Row(
+              children: [
+                SizedBox(width: 60),
+                Icon(Icons.medical_services, color: Colors.white),
+                SizedBox(width: 7),
+                Text(
+                  'FarmaTech',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
+                ),
+              ],
+            ),
+            backgroundColor: Color(0xFF2DB184),
+            elevation: 0,
+          ),
+        ),
       ),
       drawer: Drawer(
         child: Container(
@@ -139,7 +144,11 @@ class _ProfileState extends State<Profile> {
                     ],
                   ),
                   onPressed: () {
-                    _onItemTapped(0);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MedicamentosScreen()),
+                    );
                   },
                 ),
                 SizedBox(width: 20),
@@ -170,7 +179,10 @@ class _ProfileState extends State<Profile> {
                     ],
                   ),
                   onPressed: () {
-                    _onItemTapped(1);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ConsultaScreen()),
+                    );
                   },
                 ),
                 SizedBox(width: 20),
@@ -201,7 +213,11 @@ class _ProfileState extends State<Profile> {
                     ],
                   ),
                   onPressed: () {
-                    _onItemTapped(2);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LaboratoriosScreen()),
+                    );
                   },
                 ),
                 SizedBox(width: 20),
@@ -232,6 +248,11 @@ class _ProfileState extends State<Profile> {
                     ],
                   ),
                   onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LaboratoriosScreen()),
+                    );
                     // Acción al presionar el icono de restricción para niños
                   },
                 ),
@@ -263,6 +284,11 @@ class _ProfileState extends State<Profile> {
                     ],
                   ),
                   onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LaboratoriosScreen()),
+                    );
                     // Acción al presionar el icono de restricción para embarazadas
                   },
                 ),
@@ -271,51 +297,73 @@ class _ProfileState extends State<Profile> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xFF2DB184),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Color.fromARGB(255, 142, 160, 154)),
-            label: 'Inicio',
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(20),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.rocket, color: Color.fromARGB(255, 247, 249, 248)),
-            label: 'Lanzamientos',
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.3),
+              blurRadius: 10,
+              offset: Offset(0, -5),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(20),
           ),
-          BottomNavigationBarItem(
-            icon:
-                Icon(Icons.settings, color: Color.fromARGB(255, 208, 210, 210)),
-            label: 'Ajustes',
+          child: BottomNavigationBar(
+            backgroundColor: Colors.white,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home, color: Colors.black),
+                label: 'Inicio',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.rocket, color: Colors.teal[400]),
+                label: 'Lanzamientos',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings, color: Colors.teal[400]),
+                label: 'Ajustes',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            type: BottomNavigationBarType.fixed, // Aquí está la clave
+            unselectedLabelStyle: TextStyle(
+                color: Colors.teal[400]), // Estilo para los labels no seleccionados
+            selectedLabelStyle: TextStyle(
+                color: Colors.black), // Estilo para el label seleccionado
+            onTap: (index) {
+              switch (index) {
+                case 0:
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SplashScreen()),
+                  );
+                  break;
+                case 1:
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Lanzamiento()),
+                  ); // Navigate to lanzamientos screen
+                  break;
+                case 2:
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ConfiguracionScreen(
+                        user: FirebaseAuth.instance.currentUser!,
+                      ),
+                    ),
+                  ); // Navigate to ajustes screen
+                  break;
+              }
+            },
           ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.green[800],
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SplashScreen()),
-              );
-              break;
-            case 1:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Lanzamiento()),
-              );
-              // Navigate to lanzamientos screen
-              break;
-            case 2:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => ConfiguracionScreen(
-                        user: FirebaseAuth.instance.currentUser!)),
-              );
-              // Navigate to ajustes screen
-              break;
-          }
-        },
+        ),
       ),
     );
   }
